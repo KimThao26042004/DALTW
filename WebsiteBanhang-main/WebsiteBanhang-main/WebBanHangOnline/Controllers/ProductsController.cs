@@ -19,7 +19,7 @@ namespace WebBanHangOnline.Controllers
             int pageSize = 8; // Số sản phẩm mỗi trang
             int pageNumber = page ?? 1; // Trang hiện tại, mặc định là trang 1
 
-            var products = db.Products.OrderBy(p => p.Title).ToPagedList(pageNumber, pageSize);
+            var products = db.Products.Where(x => x.IsActive).OrderBy(p => p.Title).ToPagedList(pageNumber, pageSize);
             ViewBag.PageNumber = pageNumber;
             ViewBag.PageSize = pageSize;
             ViewBag.TotalPages = products.PageCount;
@@ -45,7 +45,7 @@ namespace WebBanHangOnline.Controllers
             int pageSize = 8; // Số sản phẩm mỗi trang
             int pageNumber = page ?? 1; // Trang hiện tại, mặc định là trang 1
 
-            var items = db.Products.Where(x => id <= 0 || x.ProductCategoryId == id)
+            var items = db.Products.Where(x => (id <= 0 || x.ProductCategoryId == id) && x.IsActive) 
                                    .OrderBy(p => p.Title)
                                    .ToPagedList(pageNumber, pageSize);
 
@@ -65,7 +65,7 @@ namespace WebBanHangOnline.Controllers
             int pageSize = 8; // Số sản phẩm mỗi trang
             int pageNumber = page ?? 1; // Trang hiện tại, mặc định là trang 1
 
-            var items = db.Products.Where(x => x.IsSale && (id <= 0 || x.ProductCategoryId == id))
+            var items = db.Products.Where(x => x.IsSale && x.IsActive && (id <= 0 || x.ProductCategoryId == id))
                                    .OrderBy(p => p.Title)
                                    .ToPagedList(pageNumber, pageSize);
 
@@ -82,13 +82,13 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult Partial_ItemsByCateId()
         {
-            var items = db.Products.Where(x => x.IsHome && x.IsActive).Take(12).ToList();
+            var items = db.Products.Where(x => x.IsHome && x.IsActive).Take(15).ToList();
             return PartialView(items);
         }
 
         public ActionResult Partial_ProductSales()
         {
-            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(12).ToList();
+            var items = db.Products.Where(x => x.IsSale && x.IsActive).Take(15).ToList();
             return PartialView(items);
         }
 
