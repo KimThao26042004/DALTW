@@ -325,7 +325,7 @@ jQuery(document).ready(function ($) {
 				});
 			});
 
-			// Filter based on the price range slider
+			 //Filter based on the price range slider
 			filterButton.on('click', function () {
 				$('.product-grid').isotope({
 					filter: function () {
@@ -346,6 +346,7 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+		
 	/* 
 
 	7. Init Price Slider

@@ -32,19 +32,17 @@
                     @Html.Action("MenuLeft", "Menu", new { id = ViewBag.CateId })
                 </div>
 
-                <!-- Price Range Filtering -->
                 <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Giá sản phẩm</h5>
-                    </div>
-                    <p>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                        <input type="hidden" id="FromAmount" />
-                        <input type="hidden" id="ToAmount" />
-                    </p>
-                    <div id="slider-range"></div>
-                    <div class="filter_button"><span>filter</span></div>
-
+                    @*<div class="sidebar_title">
+            <h5>Giá sản phẩm</h5>
+        </div>
+        <p>
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+        <div id="slider-range"></div>
+        <div class="filter_button"><span>Lọc</span></div>*@
+                    @*<hr />*@
+                    @Html.Action("Refresh", "Home")
                 </div>
 
             </div>
@@ -72,7 +70,7 @@
                                             <li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Tên từ A đến Z</span></li>
                                         </ul>
                                     </li>
-                                  
+                                 </ul>
                                 <div class="pages d-flex flex-row align-items-center">
                                     <div class="page_current">
                                         <span>@ViewBag.PageNumber</span>
