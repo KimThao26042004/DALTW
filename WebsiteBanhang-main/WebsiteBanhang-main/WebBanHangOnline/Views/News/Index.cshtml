@@ -28,6 +28,45 @@
         max-width: 100%;
         max-height: 100%;
     }
+
+    .pagination {
+        display: inline-flex;
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+            .pagination li a {
+                color: #007bff;
+                text-decoration: none;
+                padding: 5px 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                background-color: #f8f9fa;
+                font-size: 14px;
+            }
+
+                .pagination li a:hover {
+                    background-color: #007bff;
+                    color: #fff;
+                    border-color: #007bff;
+                }
+
+        .pagination .disabled a {
+            color: #6c757d;
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
 </style>
 <div class="container news_section_container">
     <div class="row">
@@ -72,7 +111,9 @@
         <div class="row">
             <div class="col-6"></div>
             <div class="col-6" style="text-align:right;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                <ul class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </ul>
             </div>
         </div>
     }

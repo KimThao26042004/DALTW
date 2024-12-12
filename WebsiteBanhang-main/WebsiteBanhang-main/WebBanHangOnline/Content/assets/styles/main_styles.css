@@ -1627,10 +1627,17 @@ section
 	align-items: flex-start; /* Căn chỉnh các mục về phía bên trái */
 }
 	.footer_nav h4 {
-		margin-bottom: 15px; /* Thêm khoảng cách dưới tiêu đề */
+		margin: 15px; /* Thêm khoảng cách dưới tiêu đề */
 	}
 .footer_nav_container {
-	background: #f2f2f2;
+	background: #ffffff;
+	height: 135px;
+	display: flex;
+	flex-direction: column; /* Chuyển các mục trong danh sách thành một cột */
+	align-items: flex-start; /* Căn chỉnh các mục về phía bên trái */
+}
+.footer_nav_container1 {
+	background: #ffffff;
 	height: 135px;
 	display: flex;
 	flex-direction: column; /* Chuyển các mục trong danh sách thành một cột */

@@ -45,6 +45,7 @@ jQuery(document).ready(function ($) {
         setHeader();
     });
 
+    initDeleteWishlist();
     initMenu();
     initTimer();
     initFavorite();
@@ -236,6 +237,39 @@ jQuery(document).ready(function ($) {
             });
         }
     }
+
+    function initDeleteWishlist() {
+        if ($('.delete-wishlist').length) {
+            $(document).on('click', '.delete-wishlist', function (e) {
+                e.preventDefault(); // Ngăn hành động mặc định của thẻ <a>
+                var id = $(this).data('id'); // Lấy ID từ thuộc tính data-id
+                DeleteWishlist1(id); // Gọi hàm xóa
+            });
+        }
+    }
+
+    function DeleteWishlist1(id) {
+        $.ajax({
+            url: '/wishlist/PostDeleteWishlist',
+            type: 'POST',
+            data: { ProductId: id },
+            success: function (res) {
+                if (res.Success === false) {
+                    alert("Xóa thất bại: " + res.Message); // Hiển thị thông báo thất bại
+                } else {
+                    alert(res.Message); // Thông báo thành công
+                    // Tải lại trang sau khi xóa thành công
+                    setTimeout(function () {
+                        location.reload(); // Tải lại trang sau khi thông báo thành công
+                    }, 500); // Đợi một chút để thông báo hiển thị trước khi tải lại trang
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Lỗi kết nối: " + error); // Thông báo lỗi khi có vấn đề với AJAX
+            }
+        });
+    }
+
     function DeleteWishlist(id) {
         $.ajax({
             url: '/wishlist/PostDeleteWishlist',
