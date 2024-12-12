@@ -91,6 +91,13 @@ namespace WebBanHangOnline
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "WebBanHangOnline.Controllers" }
             );
+            routes.MapRoute(
+                name: "OrderDetail",
+                url: "OrderDetail/View/{id}",
+                defaults: new { controller = "OrderDetail", action = "View", id = UrlParameter.Optional },
+                namespaces: new[] { "WebBanHangOnline.Controllers" }
+            );
+
         }
     }
 }

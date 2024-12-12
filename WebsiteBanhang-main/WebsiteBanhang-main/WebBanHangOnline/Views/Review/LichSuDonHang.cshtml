@@ -8,6 +8,7 @@
             <tr>
                 <td>STT</td>
                 <td>Mã đơn hàng</td>
+                <td>Chi tiết đơn hàng</td>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,10 @@
                 <tr>
                     <td>@i</td>
                     <td>@item.Code</td>
+                    <td>
+                        <!-- Đảm bảo link này dẫn đến action 'View' trong OrderDetailController -->
+                        <a href="@Url.Action("View", "OrderDetail", new { id = item.Id })">Chi tiết</a>
+                    </td>
                 </tr>
                 i++;
             }
